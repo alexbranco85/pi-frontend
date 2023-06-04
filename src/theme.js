@@ -5,7 +5,6 @@ const theme = createTheme({
 
   palette: {
       primary: {
-        primary: "#fff",
         main: "#FF4F4F",
         black: "#000",
         white: "#FFF",
@@ -53,16 +52,6 @@ const theme = createTheme({
     width: '100%',
     maxWidth: '1200px'
   },
-  
-  // components: {
-  //   MuiButton: {
-  //     styleOverrides: {
-  //       root: {
-  //         backgroundColor: "#000",
-  //       }
-  //     },    
-  //   }
-  // },
 
   typography: {
     fontSize: 15,
