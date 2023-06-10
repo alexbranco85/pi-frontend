@@ -4,26 +4,26 @@ import { createTheme } from '@mui/material/styles';
 const theme = createTheme({
 
   palette: {
-      primary: {
-        main: "#FF4F4F",
-        black: "#000",
-        white: "#FFF",
-        secondary: "#fff",
-      },
-      secondary: {
-        main: "#FF4F4F",
-        primary: "#fff",
-      },
-      searchInput: {
-        main: "#fff",
-        primary: "#fff",
-        secondary: "#fff",
-        black: "#fff",
-        light: '#fff',
-        dark: '#fff',
-        contrastText: '#fff',
-        color: '#fff'
-      }
+    primary: {
+      main: "#FF4F4F",
+      black: "#000",
+      white: "#FFF",
+      secondary: "#fff",
+    },
+    secondary: {
+      main: "#FF4F4F",
+      primary: "#fff",
+    },
+    searchInput: {
+      main: "#fff",
+      primary: "#fff",
+      secondary: "#fff",
+      black: "#fff",
+      light: '#fff',
+      dark: '#fff',
+      contrastText: '#fff',
+      color: '#fff'
+    }
   },
 
   bgRosa: {
@@ -35,26 +35,40 @@ const theme = createTheme({
     borderRadius: 0,
     backgroundPosition: 'center'
   },
-
+  productCard: {
+    pb: 6,
+    background: 'linear-gradient(180deg, #F6F6F6 0%, #D6D6D6 100%)',
+    borderRadius: 3,
+    textAlign: 'center',
+    ':hover': { background: '#000', color: '#fff' }
+  },
   boxPages: {
     py: 3,
     display: 'flex',
-    justifyContent: 'center'  
+    justifyContent: 'center'
   },
 
   header: {
     py: 3,
     display: 'flex',
-    justifyContent: 'center'  
+    justifyContent: 'center'
   },
 
   container: {
     width: '100%',
-    maxWidth: '1200px'
+    maxWidth: '1240px'
   },
 
   typography: {
+    fontFamily: 'Lato, Verdana',
     fontSize: 15,
+
+    h2: {
+      fontSize: '24px',
+      color: '#000',
+      marginBottom: 10,
+      marginTop: 10
+    },
   },
 });
 

@@ -7,12 +7,17 @@ import { useTheme } from '@mui/material';
 const Footer = () => {
   const theme = useTheme();
   return (
-    <Box sx={{ backgroundColor: theme.palette.primary.black, ...theme.header }}>
+    <Box sx={{ backgroundColor: theme.palette.primary.black, ...theme.header, py: 10, mt: 5 }}>
       <Grid container sx={{ ...theme.container }}>
         <Grid item md={3}>
-          <img src='./images/logotipo.png' />
-          <Button variant="outlined" sx={{ my: 3 }}>Quem Somos</Button>
-          <ButtonGroup variant="outlined" aria-label="outlined button group" sx={{ borderColor: '#fff'}}>
+          <Grid item md={12}>
+            <img src='./images/logotipo.png' />
+          </Grid>
+          <Grid item md={12}>
+            <Button variant="outlined" sx={{ my: 3 }}>Quem Somos</Button>
+          </Grid>
+          <Grid item md={12}>
+          <ButtonGroup variant="outlined" aria-label="outlined button group" sx={{ borderColor: '#fff' }}>
             <Button>
               <Facebook sx={{ color: theme.palette.primary.white }} />
             </Button>
@@ -24,38 +29,39 @@ const Footer = () => {
             </Button>
           </ButtonGroup>
         </Grid>
-        <Grid item md={3} sx={{ px: 3, color: '#fff' }}>
-          <Typography><strong>Para Eles</strong></Typography>
-          <Divider color='#fff' sx={{ my: 2 }} />
-          <Typography>Casual e Sapatênis</Typography>
-          <Typography>Academia</Typography>
-          <Typography>Basquete</Typography>
-          <Typography>Skate</Typography>
-          <Typography>Corrida</Typography>
-          <Typography>Caminhada</Typography>
-        </Grid>
-        <Grid item md={3} sx={{ px: 3, color: '#fff' }}>
-          <Typography><strong>Para Elas</strong></Typography>
-          <Divider color='#fff' sx={{ my: 2 }} />
-          <Typography>Casual e Sapatênis</Typography>
-          <Typography>Academia</Typography>
-          <Typography>Basquete</Typography>
-          <Typography>Skate</Typography>
-          <Typography>Corrida</Typography>
-          <Typography>Caminhada</Typography>
-        </Grid>
-        <Grid item md={3} sx={{ pl: 3, color: '#fff' }}>
-          <Typography><strong>Suporte</strong></Typography>
-          <Divider color='#fff' sx={{ my: 2 }} />
-          <Typography>Atendimento ao Cliente</Typography>
-          <Typography>Formas de Pagamento</Typography>
-          <Typography>Perguntas Frequentes</Typography>
-          <Typography>Política de Entregas</Typography>
-          <Typography>Política de Privacidade</Typography>
-          <Typography>Termos e Condições de Uso</Typography>
-        </Grid>
       </Grid>
-    </Box>
+      <Grid item md={3} sx={{ px: 3, color: '#fff' }}>
+        <Typography><strong>Para Eles</strong></Typography>
+        <Divider color='#fff' sx={{ my: 2 }} />
+        <Typography>Casual e Sapatênis</Typography>
+        <Typography>Academia</Typography>
+        <Typography>Basquete</Typography>
+        <Typography>Skate</Typography>
+        <Typography>Corrida</Typography>
+        <Typography>Caminhada</Typography>
+      </Grid>
+      <Grid item md={3} sx={{ px: 3, color: '#fff' }}>
+        <Typography><strong>Para Elas</strong></Typography>
+        <Divider color='#fff' sx={{ my: 2 }} />
+        <Typography>Casual e Sapatênis</Typography>
+        <Typography>Academia</Typography>
+        <Typography>Basquete</Typography>
+        <Typography>Skate</Typography>
+        <Typography>Corrida</Typography>
+        <Typography>Caminhada</Typography>
+      </Grid>
+      <Grid item md={3} sx={{ pl: 3, color: '#fff' }}>
+        <Typography><strong>Suporte</strong></Typography>
+        <Divider color='#fff' sx={{ my: 2 }} />
+        <Typography>Atendimento ao Cliente</Typography>
+        <Typography>Formas de Pagamento</Typography>
+        <Typography>Perguntas Frequentes</Typography>
+        <Typography>Política de Entregas</Typography>
+        <Typography>Política de Privacidade</Typography>
+        <Typography>Termos e Condições de Uso</Typography>
+      </Grid>
+    </Grid>
+    </Box >
   )
 }
 
