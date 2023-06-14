@@ -11,7 +11,7 @@ const Footer = () => {
       <Grid container sx={{ ...theme.container }}>
         <Grid item md={3}>
           <Grid item md={12}>
-            <img src='./images/logotipo.png' />
+            <img src='/images/logotipo.png' />
           </Grid>
           <Grid item md={12}>
             <Button variant="outlined" sx={{ my: 3 }}>Quem Somos</Button>

@@ -9,6 +9,7 @@ const theme = createTheme({
       black: "#000",
       white: "#FFF",
       secondary: "#fff",
+      gray: "#D9D9D9"
     },
     secondary: {
       main: "#FF4F4F",
@@ -62,6 +63,11 @@ const theme = createTheme({
   typography: {
     fontFamily: 'Lato, Verdana',
     fontSize: 15,
+
+    h1: {
+      fontSize: '32px',
+      fontWeight: 'bold',
+    },
 
     h2: {
       fontSize: '24px',

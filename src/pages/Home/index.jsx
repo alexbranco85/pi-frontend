@@ -60,7 +60,8 @@ const Home = () => {
               key={item.id}
               img={item.imagemDestaque}
               price={item.valor}
-              sale={item.desconto} />
+              sale={item.desconto}
+              sku={item.sku} />
           ))}
         </Grid>
       </Box>
@@ -74,7 +75,8 @@ const Home = () => {
               key={item.id}
               img={item.imagemDestaque}
               price={item.valor}
-              sale={item.desconto} />
+              sale={item.desconto}
+              sku={item.sku} />
           ))}
         </Grid>
       </Box>

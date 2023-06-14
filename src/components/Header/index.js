@@ -1,4 +1,4 @@
-import { Grid, Box, AppBar, Menu, MenuItem, Typography, Button, IconButton, OutlinedInput, TextField, InputBase, GlobalStyles, Popover } from '@mui/material';
+import { Grid, Box, AppBar, Menu, MenuItem, Typography, Button, IconButton, OutlinedInput, TextField, InputBase, GlobalStyles, Popover, Link } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Favorite, Person, ShoppingCart } from '@mui/icons-material'
@@ -20,22 +20,22 @@ const Header = () => {
     {
       "id": "1",
       "name": "Home",
-      "link": "#",
+      "link": "/",
     },
     {
       "id": "2",
       "name": "Para Eles",
-      "link": "#",
+      "link": "/categoria/1",
     },
     {
       "id": "3",
       "name": "Para Elas",
-      "link": "#",
+      "link": "/categoria/2"
     },
     {
       "id": "4",
       "name": "Todos",
-      "link": "#",
+      "link": "/todos",
     },
     {
       "id": "5",
@@ -61,15 +61,17 @@ const Header = () => {
       <Box sx={{ backgroundColor: theme.palette.primary.black, ...theme.header }}>
         <Grid container sx={{ ...theme.container, alignItems: 'center' }}>
           <Grid item md={2}>
-            <img src='./images/logotipo.png' />
+            <img src='/images/logotipo.png' />
           </Grid>
           <Grid item md={6}>
             <Box sx={{ display: { xs: 'none', md: 'flex', justifyContent: 'center', alignItems: 'center' } }}>
               {menu.map((page) => (
-                <Button key={page.id}
-                  sx={{ color: theme.palette.primary.white, mx: 1 }}>
-                  {page.name}
-                </Button>
+                <Link href={page.link}>
+                  <Button key={page.id}
+                    sx={{ color: theme.palette.primary.white, mx: 1 }}>
+                    {page.name}
+                  </Button>
+                </Link>
               ))}
             </Box>
           </Grid>
@@ -126,7 +128,7 @@ const Header = () => {
           </Grid>
         </Grid>
       </Box>
-      <DefaultModal 
+      <DefaultModal
         open={openLogin}
         title={"Login / Cadastro"}
         content={<FormLogin />}
