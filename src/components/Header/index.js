@@ -1,4 +1,4 @@
-import { Grid, Box, AppBar, Menu, MenuItem, Typography, Button, IconButton, OutlinedInput, TextField, InputBase, GlobalStyles, Popover, Link } from '@mui/material';
+import { Grid, Box, AppBar, Menu, MenuItem, Typography, Button, IconButton, OutlinedInput, TextField, InputBase, GlobalStyles, Popover } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Favorite, Person, ShoppingCart } from '@mui/icons-material'
@@ -6,6 +6,7 @@ import MiniCart from '../MiniCart';
 import ModalLoginRegister from '../DefaultModal';
 import DefaultModal from '../DefaultModal';
 import FormLogin from '../FormLogin';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const theme = useTheme();
@@ -66,7 +67,7 @@ const Header = () => {
           <Grid item md={6}>
             <Box sx={{ display: { xs: 'none', md: 'flex', justifyContent: 'center', alignItems: 'center' } }}>
               {menu.map((page) => (
-                <Link href={page.link}>
+                <Link to={page.link}>
                   <Button key={page.id}
                     sx={{ color: theme.palette.primary.white, mx: 1 }}>
                     {page.name}

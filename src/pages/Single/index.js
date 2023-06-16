@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { Box, Button, Divider, FormControl, Grid, InputLabel, MenuItem, Select, Stack, Typography } from '@mui/material';
 import ProductCard from '../../components/ProductCard';
 import { useDispatch, useSelector } from 'react-redux';
-import { insertData } from '../../actions';
+import { addToCart } from '../../reducer/cartSlice';
 
 const SingleProduct = () => {
   const theme = useTheme();
@@ -40,8 +40,7 @@ const SingleProduct = () => {
   
 
   const handleClickAddCart = () => {
-    const updatedCart = [product];
-    dispatch(insertData(updatedCart));
+    dispatch(addToCart(product));
   };
 
   useEffect(() => {
