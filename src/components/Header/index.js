@@ -50,7 +50,7 @@ const Header = () => {
     {
       "id": "5",
       "name": "Contato",
-      "link": "#",
+      "link": "/contato",
     }
   ]
 
