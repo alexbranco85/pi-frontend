@@ -37,22 +37,13 @@ const SingleProduct = () => {
     setTamanho(event.target.value);
   };
 
-  
-
   const handleClickAddCart = () => {
     dispatch(addToCart(product));
   };
 
   useEffect(() => {
     getProduct();
-  }, [])
-
-  useEffect(() => {
-    console.log("product", product);
-    console.log("sku", sku)
-    console.log("related", related)
-  }, [related])
-
+  }, [sku])
 
   return (
     <>

@@ -7,15 +7,24 @@ import ModalLoginRegister from '../DefaultModal';
 import DefaultModal from '../DefaultModal';
 import FormLogin from '../FormLogin';
 import { Link } from 'react-router-dom';
+import AccountMenu from '../AccountMenu';
+import { useSelector } from 'react-redux';
 
 const Header = () => {
   const theme = useTheme();
   const [openCart, setOpenCart] = useState();
   const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorElLogin, setAnchorElLogin] = useState(null);
   const [openLogin, setOpenLogin] = useState(false);
+  const [openAccountMenu, setOpenAccountMenu] = useState(false);
+  const [infosLogin, setInfosLogin] = useState(undefined)
+
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
+  const idLogin = open ? 'simple-popover' : undefined;
+  
+  let userData = useSelector(state => state.login);
 
   const menu = [
     {
@@ -49,13 +58,41 @@ const Header = () => {
     setAnchorEl(event.currentTarget)
   }
 
+  const handleClickAccount = (event) => {
+    setAnchorElLogin(event.currentTarget)
+  }
+
   const handleCloseCart = () => {
     setAnchorEl(null);
   }
 
+  const handleCloseLogin = () => {
+    setOpenLogin(false);
+  }
+
+  const handleCloseAccountMenu = () => {
+    setOpenAccountMenu(false)
+  }
+
+  const handleLogin = () => {
+    if (!infosLogin || Array.isArray(infosLogin)) {
+      setOpenLogin(true)
+    } else {
+      setOpenAccountMenu(true)
+    }
+  }
+
+  const clearLogin = () => {
+    setInfosLogin(undefined)
+  }
+
   useEffect(() => {
-    console.log("openLogin", openLogin)
-  }, [openLogin])
+    console.log("infosLogin", infosLogin)
+  }, [infosLogin])
+
+  useEffect(() => {
+    setInfosLogin(userData)
+  }, [userData])
 
   return (
     <>
@@ -105,9 +142,21 @@ const Header = () => {
               }} />
           </Grid>
           <Grid item md={2} sx={{ alignItems: 'center', justifyContent: 'right', display: 'flex' }}>
-            <IconButton aria-label="Minha Conta" sx={{ my: 1 }}>
-              <Person sx={{ color: theme.palette.primary.white }} onClick={() => setOpenLogin(true)} />
+            <IconButton aria-label="Minha Conta" sx={{ my: 1 }} onClick={handleClickAccount}>
+              <Person sx={{ color: theme.palette.primary.white }} onClick={() => handleLogin()} />
             </IconButton>
+            <Popover
+              id={idLogin}
+              open={openAccountMenu}
+              anchorEl={anchorElLogin}
+              onClose={handleCloseAccountMenu}
+              anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left',
+              }}
+              sx={{ p: 2 }}>
+              <AccountMenu onClose={handleCloseAccountMenu} clearLogin={() => clearLogin()} />
+            </Popover>
             <IconButton aria-label="Meu Carrinho" sx={{ my: 1 }} onClick={handleClickCart}>
               <ShoppingCart sx={{ color: theme.palette.primary.white }} />
             </IconButton>
@@ -132,11 +181,10 @@ const Header = () => {
       <DefaultModal
         open={openLogin}
         title={"Login / Cadastro"}
-        content={<FormLogin />}
-        actionFirstButton={() => setOpenLogin(false)}
+        content={<FormLogin closeModal={handleCloseLogin} />}
         textFirstButton={"Cancelar"}
-        actionSecondButton={() => setOpenLogin(false)}
         textSecondButton={"Fazer Login"}
+        onClose={() => setOpenLogin(false)}
       />
     </>
   )

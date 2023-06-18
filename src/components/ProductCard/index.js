@@ -20,7 +20,6 @@ const ProductCard = (props) => {
             </Link>
           </Stack>
           <Typography sx={{ fontSize: '18px', minHeight: '54px', mb: 2 }}><strong>{title}</strong></Typography>
-          <Typography sx={{ fontSize: '18px', minHeight: '54px', mb: 2 }}><strong>{sku}</strong></Typography>
           <Typography sx={{ mb: 3 }}><span style={{ textDecoration: 'line-through' }}>De: R$ {price}</span> <strong>por R$ {sale}</strong></Typography>
           <Link to={`/produto/${sku}`}>
             <Button variant='outlined' size='large'>Comprar</Button>

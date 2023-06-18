@@ -22,13 +22,7 @@ const CategoryPage = (props) => {
 
   useEffect(() => {
     getCategoryProducts()
-    console.log("params", props)
-    console.log("id", id)
   }, [id])
-
-  useEffect(() => {
-    console.log("catProducts", catProducts)
-  }, [catProducts])
 
   return (
     <>
