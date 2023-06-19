@@ -15,6 +15,9 @@ import Footer from "../components/Footer"
 import Cart from "./Cart"
 import Checkout from "./Checkout"
 import Thanks from "./Thanks"
+import ListProduct from "./Admin/ListProduct"
+import CreateProduct from "./Admin/CreateProduct"
+import EditProduct from "./Admin/EditProduct"
 
 const Router = () => {
   
@@ -66,6 +69,21 @@ const Router = () => {
           exact
           path="/quemsomos"
           element={<><Header /><About /><Footer /></>}
+        />
+        <Route
+          exact
+          path="/admin"
+          element={<><Header /><ListProduct /><Footer /></>}
+        />
+        <Route
+          exact
+          path="/admin/product/create"
+          element={<><Header /><CreateProduct /><Footer /></>}
+        />
+        <Route
+          exact
+          path="/admin/product/edit/:sku"
+          element={<><Header /><EditProduct /><Footer /></>}
         />
       </Routes>
       

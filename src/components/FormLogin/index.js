@@ -59,7 +59,8 @@ const FormLogin = (props) => {
           const userAuth = {
             nome: res.data.nome,
             email: res.data.email,
-            id: res.data.id
+            id: res.data.id,
+            is_admin: res.data.is_admin,
           }
           dispatch(addLogin(userAuth))
         })
