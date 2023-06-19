@@ -3,6 +3,7 @@ import theme from '../../theme';
 import { Box, Grid, Button, IconButton, ButtonGroup, Typography, Divider } from '@mui/material';
 import { Facebook, Instagram, WhatsApp } from '@mui/icons-material';
 import { useTheme } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
   const theme = useTheme();
@@ -14,7 +15,9 @@ const Footer = () => {
             <img src='/images/logotipo.png' />
           </Grid>
           <Grid item md={12}>
+            <Link to="/quemsomos">
             <Button variant="outlined" sx={{ my: 3 }}>Quem Somos</Button>
+            </Link>
           </Grid>
           <Grid item md={12}>
           <ButtonGroup variant="outlined" aria-label="outlined button group" sx={{ borderColor: '#fff' }}>

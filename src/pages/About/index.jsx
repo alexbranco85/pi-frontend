@@ -1,7 +1,6 @@
 import React from 'react';
 import { useTheme, Box, Typography, Stack } from '@mui/material';
 import { Link } from 'react-router-dom';
-//import { red } from '@mui/material';
 
 const About = () => {
   return (
@@ -40,16 +39,17 @@ const About = () => {
             </Link>
         </Stack>
         <Box className="container slide" sx={{display: 'flex', flexDirection: 'column', ml: 80}}>
-          <Typography variant="p" className="titulo" sx={{mt: -40, fontSize: 50}}>ESTAMOS SEMPRE<br /> </Typography>
-          <Typography variant="p">EM <span className="movimento">MOVIMENTO</span></Typography> 
+          <Typography variant="p" className="titulo" sx={{mt: -40, fontSize: 50}}>ESTAMOS SEMPRE<br /></Typography>
+          <Typography variant="p" sx={{fontSize: 50}}>EM </Typography>
+          <Typography className="movimento" sx={{fontSize: 70, color: '#FF4F4F'}}>MOVIMENTO</Typography> 
           <br></br>
-          <Typography variant="p" className="subtitulo">Do esporte ao dia a dia.</Typography>
+          <Typography variant="p" className="subtitulo" sx={{fontSize: 30}}>Do esporte ao dia a dia.</Typography>
         </Box>
       </Box>
 
       <Box component="section" className="aprenumeros">
         <Box className="container">
-          <Typography variant="h2" sx={{display: 'flex', ml: 15, mb: 0, fontSize: 35}}>MAIS DE</Typography>
+          <Typography variant="h2" sx={{display: 'flex', ml: 15, mb: 0, fontSize: 45}}>MAIS DE</Typography>
           <Box className="numeros" sx={{display: 'flex', justifyContent: 'center', pt: 5, pb: 10, ml: 10, mr: 10, columnGap: 15, borderRadius: 15, backgroundColor: '#FF4F4F', color: '#FFF', mt: 3}}>
             <Box>
               <Typography variant="h2" sx={{fontSize: 50}}>20</Typography> tipos de <Typography variant="h3">CHUTEIRAS</Typography>
