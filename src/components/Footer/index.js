@@ -15,7 +15,9 @@ const Footer = () => {
             <img src='/images/logotipo.png' />
           </Grid>
           <Grid item md={12}>
+            <Link to="/quemsomos">
             <Button variant="outlined" sx={{ my: 3 }}>Quem Somos</Button>
+            </Link>
           </Grid>
           <Grid item md={12}>
             <ButtonGroup variant="outlined" aria-label="outlined button group" sx={{ borderColor: '#fff' }}>
