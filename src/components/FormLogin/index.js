@@ -63,6 +63,9 @@ const FormLogin = (props) => {
             is_admin: res.data.is_admin,
           }
           dispatch(addLogin(userAuth))
+
+          var objetoSerializado = JSON.stringify(userAuth);
+          document.cookie = "cookieLogin=" + objetoSerializado + "; expires=Thu, 01 Jan 2025 00:00:00 UTC; path=/";
         })
         .then(() => {
           setMessage("Login realizado com sucesso. Aproveite suas compras.")
@@ -83,7 +86,7 @@ const FormLogin = (props) => {
       telefone: data.telefone
     }
     try {
-      await api.post('/user', newUser)
+      await api.post('/user', {...newUser, is_admin: 0})
         .then((res) => {
           if (res.status == 201) {
             setMessage("Cadastro realizado com sucesso. Realize seu login e aproveite nossas ofertas.")

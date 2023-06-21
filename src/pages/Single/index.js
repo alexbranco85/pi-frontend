@@ -3,7 +3,7 @@ import { useTheme } from '@mui/material/styles';
 import api from '../../services/api';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { Box, Button, Divider, FormControl, Grid, InputLabel, MenuItem, Select, Stack, Typography } from '@mui/material';
+import { Alert, Box, Button, Divider, FormControl, Grid, InputLabel, MenuItem, Select, Snackbar, Stack, Typography } from '@mui/material';
 import ProductCard from '../../components/ProductCard';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToCart } from '../../reducer/cartSlice';
@@ -15,6 +15,7 @@ const SingleProduct = () => {
   const [product, setProduct] = useState();
   const [tamanho, setTamanho] = useState('');
   const [related, setRelated] = useState([])
+  const [open, setOpen] = useState();
 
   let cart = useSelector((state) => state.data)
 
@@ -28,6 +29,13 @@ const SingleProduct = () => {
       })
   }
 
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+    setOpen(false);
+  }
+
   const getRelated = async () => {
       await api.get('/featured')
         .then((res) => setRelated(res.data))
@@ -39,6 +47,11 @@ const SingleProduct = () => {
 
   const handleClickAddCart = () => {
     dispatch(addToCart(product));
+    setOpen(true)
+    var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)cart\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    // var objetoDesserializado = JSON.parse(cookieValue);
+    var objetoString = JSON.stringify(product) + cookieValue;
+    document.cookie = "cart=" + objetoString + "; expires=Thu, 01 Jan 2025 00:00:00 UTC; path=/";
   };
 
   useEffect(() => {
@@ -47,6 +60,11 @@ const SingleProduct = () => {
 
   return (
     <>
+      <Snackbar open={open} autoHideDuration={4000} onClose={handleClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+        <Alert onClose={handleClose} severity="success" sx={{ width: '100%' }}>
+          Produto adicionado com sucesso!
+        </Alert>
+      </Snackbar>
       <Box sx={{ ...theme.boxPages, my: 5 }}>
         <Grid container sx={{ ...theme.container, }}>
           <Grid item sm={6} sx={{ pr: 5 }}>

@@ -16,6 +16,7 @@ const EditProduct = () => {
     formState,
     watch,
     setValue,
+    control,
     getValues,
     handleSubmit,
   } = useForm();
@@ -39,14 +40,14 @@ const EditProduct = () => {
       setValue("desconto", product.desconto)
       setValue("descricao", product.descricao)
       setValue("tamanho", product.tamanho)
-      setValue("destaque", parseInt(product.destaque))
-      setValue("oferta", parseInt(product.oferta))
-      setValue("id_produto_categoria", parseInt(product.id_produto_categoria))
+      setValue("destaque", product.destaque)
+      setValue("oferta", product.oferta)
+      setValue("id_produto_categoria", product.id_produto_categoria)
     }
   }
 
   const handleSubmitEdit = async (e) => {
-    await api.put(`/product/${product.id}`, getValues())
+    await api.put(`/product/${product.id}`, {...getValues()})
       .then(navigate('/admin'))
   }
 
@@ -91,12 +92,12 @@ const EditProduct = () => {
             <TextField sx={{ my: 1 }} InputLabelProps={{ shrink: true }} required id="outlined-basic" name="tamanho" label="Tamanho" variant="outlined" fullWidth {...register("tamanho")} />
           </Grid>
           <Grid item sm={12}>
-            <TextField sx={{ my: 1 }} InputLabelProps={{ shrink: true }} required id="outlined-basic" name="descricao" label="Descrição" variant="outlined" fullWidth {...register("descricao")} />
+            <TextField multiline sx={{ my: 1 }} InputLabelProps={{ shrink: true }} required id="outlined-basic" name="descricao" label="Descrição" variant="outlined" fullWidth {...register("descricao")} />
           </Grid>
           <Grid item sm={4} sx={{ my: 1 }}>
             <FormControl fullWidth>
               <InputLabel>Destaque</InputLabel>
-              <Select label="Destaque" fullWidth {...register("destaque")} >
+              <Select label="Destaque"  name="destaque" control={control} fullWidth {...register("destaque")} >
                 <MenuItem value={0}>Não</MenuItem>
                 <MenuItem value={1}>Sim</MenuItem>
               </Select>
@@ -105,7 +106,7 @@ const EditProduct = () => {
           <Grid item sm={4} sx={{ my: 1 }}>
             <FormControl fullWidth>
               <InputLabel>Oferta</InputLabel>
-              <Select label="Oferta" fullWidth {...register("oferta")}>
+              <Select label="Oferta" name="oferta" fullWidth {...register("oferta")}>
                 <MenuItem value={0}>Não</MenuItem>
                 <MenuItem value={1}>Sim</MenuItem>
               </Select>
@@ -114,7 +115,7 @@ const EditProduct = () => {
           <Grid item sm={4} sx={{ my: 1 }}>
             <FormControl fullWidth>
               <InputLabel>Categoria</InputLabel>
-              <Select label="Categoria" fullWidth {...register("id_produto_categoria")}>
+              <Select label="Categoria" name="id_produto_categoria" fullWidth {...register("id_produto_categoria")}>
                 <MenuItem value={1}>Para Eles</MenuItem>
                 <MenuItem value={2}>Para Elas</MenuItem>
               </Select>
